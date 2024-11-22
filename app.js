@@ -47,11 +47,28 @@ const PORT = process.env.PORT || 8000;
 
 
 //? app.route()
-app.route("/route")
-.get((req,res) => {res.send({message:"get"})})
-.post((req,res) => {res.send({message:"post"})})
-.put((req,res) => {res.send({message:"put"})})
-.delete((req,res) => {res.send({message:"delete"})})
+// app.route("/route")
+// .get((req,res) => {res.send({message:"get"})})
+// .post((req,res) => {res.send({message:"post"})})
+// .put((req,res) => {res.send({message:"put"})})
+// .delete((req,res) => {res.send({message:"delete"})})
+
+//? URL (path) options:
+// app.get("/", (req,res) => res.send("/ = root(home)"))
+// app.get("/path", (req,res) => res.send("/path = path"))
+
+//? express -url support jockerChars:
+// app.get("/abc(xy)?123", (req,res) => res.send("/abc(xy)123")) // \ ? means xy, whether it happens or not
+// app.get("/abc(x)+123", (req,res) => res.send("/abc(x)123")) // at least there must be one
+// app.get("/abc*123", (req,res) => res.send("/star means it does not matter")) 
+app.get("/abc*123", (req,res) => res.send("/star means it does not matter")) 
+
+//? express -url support Regular Expression:
+// app.get(/xyz/, (req,res) => res.send("/if it contains xyz it works/")) 
+// app.get(/xyz$/, (req,res) => res.send("/ends with xyz/")) 
+app.get(/^\/xyz/, (req,res) => res.send("/starts with xyz/")) 
+
+
 
 
 // app.listen(PORT, () => {console.log(`running: http://127.0.0.1:8000`)})
