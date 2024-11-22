@@ -61,12 +61,65 @@ const PORT = process.env.PORT || 8000;
 // app.get("/abc(xy)?123", (req,res) => res.send("/abc(xy)123")) // \ ? means xy, whether it happens or not
 // app.get("/abc(x)+123", (req,res) => res.send("/abc(x)123")) // at least there must be one
 // app.get("/abc*123", (req,res) => res.send("/star means it does not matter")) 
-app.get("/abc*123", (req,res) => res.send("/star means it does not matter")) 
+// app.get("/abc*123", (req,res) => res.send("/star means it does not matter")) 
 
 //? express -url support Regular Expression:
 // app.get(/xyz/, (req,res) => res.send("/if it contains xyz it works/")) 
 // app.get(/xyz$/, (req,res) => res.send("/ends with xyz/")) 
-app.get(/^\/xyz/, (req,res) => res.send("/starts with xyz/")) 
+// app.get(/^\/xyz/, (req,res) => res.send("/starts with xyz/")) 
+
+
+//? URL Parameters (req.params)
+
+// app.get("/user/:userId/profile", (req, res) => {
+//   console.log(req.params)
+//   res.send({
+//     userId:req.params.userId
+//   });
+// });
+
+// app.get("/user/:userId/profile/update/:updating", (req, res) => {
+//   console.log(req.params)
+//   res.send({
+//     userId:req.params.userId,
+//     updating: req.params.updating
+//   });
+// });
+
+// /users/(ANY)/profile/update/(ANY)'
+// app.get('/user/:userId/profile/update/:userData', (req, res) => {
+//       res.send({
+//         userId: req.params.userId,
+//         updating: req.params.userData,
+//         url: {
+//             protocol: req.protocol,
+//             subdomains: req.subdomains,
+//             hostname: req.hostname,
+//             baseUrl: req.baseUrl,
+//             params: req.params,
+//             query: req.query,
+//             path: req.path,
+//             originalUrl: req.originalUrl,
+//             url: req.url
+//         }
+//     })
+// })
+
+// userId -> only numbers
+// app.get('/user/:userId([0-9])/', (req, res) => {
+//   res.send({
+//     userId: req.params.userId
+//     })
+// })
+
+// : 
+app.get('/user/:userId([0-9])/', (req, res) => {
+  res.send({
+    userId: req.params.userId
+    })
+})
+
+
 
 
 
