@@ -112,12 +112,26 @@ const PORT = process.env.PORT || 8000;
 //     })
 // })
 
-// : 
-app.get('/user/:userId([0-9])/', (req, res) => {
-  res.send({
-    userId: req.params.userId
-    })
-})
+// Response Methods:
+
+// ? SendStatus:
+// app.get('/', (req, res) => res.sendStatus(404))
+// ? Status:
+// app.get('/', (req, res) => res.status(200).send({ message: 'OK' }))
+// app.post('/', (req, res) => res.status(201).send({ message: 'Created' }))
+// app.put('/', (req, res) => res.status(202).send({ message: 'Accepted' }))
+// app.delete('/', (req, res) => res.status(204).send({ message: 'No Content' }))
+// ? JSON (.send() method already does this converting.)
+// app.get('/', (req, res) => res.json([{ key: 'value' }]))
+// ? Download File (Download at browser):
+// app.get('/download', (req, res) => res.download('./app.js', 'changedName.js'))
+// ? SendFile Content:
+// console.log( __dirname )
+// app.get('/file', (req, res) => res.sendFile(__dirname + '/app.js')) // FilePath must be realPath
+// ? Redirect:
+// app.get('/google', (req, res) => res.redirect(301, 'https://www.google.com')) // 301 or 302
+// app.get('/redirect', (req, res) => res.redirect(302, '/thisPath'))
+
 
 
 
